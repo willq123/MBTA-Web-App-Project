@@ -12,6 +12,8 @@ MBTA_API_KEY = os.getenv("MBTA_API_KEY")
 # Useful base URLs (you need to add the appropriate parameters for each API request)
 MAPBOX_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
 MBTA_BASE_URL = "https://api-v3.mbta.com/stops"
+mapbox_token = "pk.eyJ1IjoicWxsaXciLCJhIjoiY20zNmRlYjJqMDQ3MjJqcG82M3N1ZjNkNCJ9.D2AuneSvfjCMg426M8OIrA"
+mbta_token = "c10a259bafa748fb9789939e76a7b72e"
 
 
 # A little bit of scaffolding if you want to use it
