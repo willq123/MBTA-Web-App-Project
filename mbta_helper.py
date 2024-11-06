@@ -37,7 +37,20 @@ def get_lat_lng(place_name: str) -> tuple[str, str]:
 
     See https://docs.mapbox.com/api/search/geocoding/ for Mapbox Geocoding API URL formatting requirements.
     """
-    pass
+    url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={mapbox_token}"
+    
+    with urllib.request.urlopen(url) as response:
+        if response.status == 200:
+            data = json.load(response)
+            if data['features']:
+                coordinates = data['features'][0]['geometry']['coordinates']
+                return str(coordinates[1]), str(coordinates[0])  # Return (latitude, longitude)
+            else:
+                raise ValueError("No matching location found.")
+        else:
+            raise ConnectionError(f"Error {response.status}: {response.reason}")
+    
+
 
 
 def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
@@ -62,7 +75,9 @@ def main():
     """
     You should test all the above functions here
     """
-    pass
+    place_name = "Boston Common"
+    print(get_lat_lng(place_name))
+    
 
 
 if __name__ == "__main__":
