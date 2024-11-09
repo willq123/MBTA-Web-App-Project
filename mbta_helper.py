@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get API keys from environment variables
-mapbox_token = os.getenv("MAPBOX_TOKEN")
+MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
 MBTA_API_KEY = os.getenv("MBTA_API_KEY")
 
 # Useful base URLs (you need to add the appropriate parameters for each API request)
@@ -36,7 +36,7 @@ def get_lat_lng(place_name: str) -> tuple[str, str]:
 
     See https://docs.mapbox.com/api/search/geocoding/ for Mapbox Geocoding API URL formatting requirements.
     """
-    url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={mapbox_token}"
+    url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={MAPBOX_TOKEN}"
     
     with urllib.request.urlopen(url) as response:
         if response.status == 200:
