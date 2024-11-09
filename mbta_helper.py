@@ -37,7 +37,7 @@ def get_lat_lng(place_name: str) -> tuple[str, str]:
 
     See https://docs.mapbox.com/api/search/geocoding/ for Mapbox Geocoding API URL formatting requirements.
     """
-    url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={mapbox_token}"
+    url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={MAPBOX_TOKEN}"
     
     with urllib.request.urlopen(url) as response:
         if response.status == 200:
@@ -59,7 +59,20 @@ def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
 
     See https://api-v3.mbta.com/docs/swagger/index.html#/Stop/ApiWeb_StopController_index for URL formatting requirements for the 'GET /stops' API.
     """
-    pass
+    url = f"{MBTA_BASE_URL}?filter[latitude]={latitude}&filter[longitude]={longitude}&sort=distance&api_key={MBTA_API_KEY}"
+    
+    with urllib.request.urlopen(url) as response:
+        if response.status == 200:
+            data = json.load(response)
+            if data['data']:
+                nearest_station = data['data'][0] # want to get the first item in the list
+                station_name = nearest_station['attributes']['name']
+                wheelchair_accessible = nearest_station['attributes']['wheelchair_boarding'] == 1  # 1 indicates accessible
+
+                return station_name, wheelchair_accessible
+            else:
+                raise ValueError("No nearby stations found.")
+    
 
 
 def find_stop_near(place_name: str) -> tuple[str, bool]:
@@ -68,7 +81,9 @@ def find_stop_near(place_name: str) -> tuple[str, bool]:
 
     This function might use all the functions above.
     """
-    pass
+    latitude, longitude = get_lat_lng(place_name)
+    station_name, wheelchair_accessible = get_nearest_station(latitude, longitude)
+    return station_name, wheelchair_accessible
 
 
 def main():
@@ -82,3 +97,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# When I run the code, it gives me urllib.error.HTTPError: HTTP Error 401: Unauthorized.
+# ChatGPT said the possible API key or token is invalid or API Key not loaded correctly. 
+# You might have to double check that. Thanks!
