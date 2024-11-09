@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get API keys from environment variables
-MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
+mapbox_token = os.getenv("MAPBOX_TOKEN")
 MBTA_API_KEY = os.getenv("MBTA_API_KEY")
 
 # Useful base URLs (you need to add the appropriate parameters for each API request)
