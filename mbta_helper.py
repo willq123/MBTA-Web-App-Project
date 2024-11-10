@@ -37,17 +37,13 @@ def get_lat_lng(place_name: str) -> tuple[str, str]:
     See https://docs.mapbox.com/api/search/geocoding/ for Mapbox Geocoding API URL formatting requirements.
     """
     url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{urllib.parse.quote(place_name)}.json?access_token={MAPBOX_TOKEN}"
-    
-    with urllib.request.urlopen(url) as response:
-        if response.status == 200:
-            data = json.load(response)
-            if data['features']:
-                coordinates = data['features'][0]['geometry']['coordinates']
-                return str(coordinates[1]), str(coordinates[0])  # Return (latitude, longitude)
-            else:
-                raise ValueError("No matching location found.")
-        else:
-            raise ConnectionError(f"Error {response.status}: {response.reason}")
+    data = get_json(url)
+    if data['features']:
+        coordinates = data['features'][0]['geometry']['coordinates']
+        return str(coordinates[1]), str(coordinates[0])  # Return (latitude, longitude)
+    else:
+        return None
+
     
 
 
@@ -58,7 +54,21 @@ def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
 
     See https://api-v3.mbta.com/docs/swagger/index.html#/Stop/ApiWeb_StopController_index for URL formatting requirements for the 'GET /stops' API.
     """
-    pass
+    url = f"https://api-v3.mbta.com/stops?filter[latitude]={latitude}&filter[longitude]={longitude}&sort=distance"
+    response =urllib.request.urlopen(url)
+    response_text = response.read().decode("utf-8")
+    data = json.loads(response_text)
+    if data['data']:
+        station_name = data['data'][0]['attributes']['name']
+        wheelchair_accessible = data['data'][0]['attributes']['wheelchair_boarding']
+
+        return station_name, wheelchair_accessible
+    else:
+        return None, None
+
+    
+    
+
 
 
 def find_stop_near(place_name: str) -> tuple[str, bool]:
@@ -67,15 +77,26 @@ def find_stop_near(place_name: str) -> tuple[str, bool]:
 
     This function might use all the functions above.
     """
-    pass
+    lat, lng = get_lat_lng(place_name)
+    if lat is None or lng is None:
+        return "There is no Statiuon near this place"
+    else:
+        return get_nearest_station(lat, lng)
 
 
 def main():
     """
     You should test all the above functions here
     """
-    place_name = "Boston Common"
-    print(get_lat_lng(place_name))
+    place_name = "Boston Commons"
+    lat, lng = get_lat_lng(place_name)
+    # print(lat, lng)
+
+    nearest_station = get_nearest_station(lat, lng)
+    # print(nearest_station)
+    
+    name, accessibility = find_stop_near("Boston Commons")
+    # print(name, accessibility)
     
 
 
