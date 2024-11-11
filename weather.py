@@ -8,7 +8,6 @@ import json
 # Load environment variables from .env file
 load_dotenv()
 # OPENWEAHTER_API_KEY = os.getenv("OPENWEAHTER_API_KEY")
-OPENWEAHTER_API_KEY = "609fbd278449cd40fd0ebb63cc736e4e"
 
 def get_weather(location):
     """
