@@ -29,7 +29,6 @@ def get_json(url: str) -> dict:
         return response_data
     
 
-
 def get_lat_lng(place_name: str) -> tuple[str, str]:
     """
     Given a place name or address, return a (latitude, longitude) tuple with the coordinates of the given place.
@@ -43,9 +42,6 @@ def get_lat_lng(place_name: str) -> tuple[str, str]:
         return str(coordinates[1]), str(coordinates[0])  # Return (latitude, longitude)
     else:
         return None
-
-    
-
 
 
 def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
@@ -65,10 +61,6 @@ def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
         return station_name, wheelchair_accessible
     else:
         return None, None
-
-    
-    
-
 
 
 def find_stop_near(place_name: str) -> tuple[str, bool]:
@@ -98,7 +90,6 @@ def main():
     name, accessibility = find_stop_near("Boston Commons")
     # print(name, accessibility)
     
-
 
 if __name__ == "__main__":
     main()
