@@ -1,9 +1,9 @@
 from flask import Flask, request, redirect, url_for
-import os
+# import os
 # from dotenv import load_dotenv
-from mbta_helper import find_stop_near, get_lat_lng
+from mbta_helper import find_stop_near # , get_lat_lng
 from weather import get_weather
-from event import get_events
+# from event import get_events
 
 app = Flask(__name__)
 
