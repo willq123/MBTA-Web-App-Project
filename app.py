@@ -5,9 +5,6 @@ from mbta_helper import find_stop_near # , get_lat_lng
 from weather import get_weather
 # from event import get_events
 
-MAPBOX_TOKEN = "pk.eyJ1IjoicWxsaXciLCJhIjoiY20zNmRlYjJqMDQ3MjJqcG82M3N1ZjNkNCJ9.D2AuneSvfjCMg426M8OIrA"
-MBTA_API_KEY = "c10a259bafa748fb9789939e76a7b72e"
-OPENWEAHTER_API_KEY = "609fbd278449cd40fd0ebb63cc736e4e"
 
 
 app = Flask(__name__)
