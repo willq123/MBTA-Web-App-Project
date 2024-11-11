@@ -95,6 +95,3 @@ if __name__ == "__main__":
     main()
 
 
-# When I run the code, it gives me urllib.error.HTTPError: HTTP Error 401: Unauthorized.
-# ChatGPT said the possible API key or token is invalid or API Key not loaded correctly. 
-# You might have to double check that. Thanks!
