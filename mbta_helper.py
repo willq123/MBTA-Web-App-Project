@@ -8,8 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get API keys from environment variables
-MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
-MBTA_API_KEY = os.getenv("MBTA_API_KEY")
+# MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
+# MBTA_API_KEY = os.getenv("MBTA_API_KEY")
+
+MAPBOX_TOKEN = "pk.eyJ1IjoicWxsaXciLCJhIjoiY20zNmRlYjJqMDQ3MjJqcG82M3N1ZjNkNCJ9.D2AuneSvfjCMg426M8OIrA"
+MBTA_API_KEY = "c10a259bafa748fb9789939e76a7b72e"
+
 
 # Useful base URLs (you need to add the appropriate parameters for each API request)
 MAPBOX_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
