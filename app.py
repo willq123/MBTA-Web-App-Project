@@ -75,5 +75,3 @@ def show_nearest_station(place_name):
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
 
-# I didn't use the html template. I combine the html and the app into one.
-# It worked out tho. If you want, you can make revisions and separate the code.
