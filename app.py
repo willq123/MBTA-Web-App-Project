@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from mbta_helper import find_stop_near, get_lat_lng
 from weather import get_weather
 from event import get_events
@@ -45,7 +45,6 @@ def show_nearest_station(place_name):
     try:
         station_name, wheelchair_accessible = find_stop_near(place_name)
         weather_description, temperature = get_weather(place_name)
-        events = get_events(place_name)  # Fetch events for the location
         accessibility = "Yes" if wheelchair_accessible else "No"
         result = f"""
         <html>
