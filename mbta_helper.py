@@ -85,7 +85,7 @@ def main():
     # print(lat, lng)
 
     nearest_station = get_nearest_station(lat, lng)
-    # print(nearest_station)
+    print(nearest_station)
     
     name, accessibility = find_stop_near("Boston Commons")
     # print(name, accessibility)
