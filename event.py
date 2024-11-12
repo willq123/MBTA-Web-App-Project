@@ -19,9 +19,12 @@ def get_events(location):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
+        return data
     else:
         return Exception("Could not retrieve events.")
 
 
 
 
+data = get_events('boston')
+print(data)
