@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get API keys from environment variables
-# MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
-# MBTA_API_KEY = os.getenv("MBTA_API_KEY")
+MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
+MBTA_API_KEY = os.getenv("MBTA_API_KEY")
 
 
 
@@ -87,7 +87,7 @@ def main():
     # print(lat, lng)
 
     nearest_station = get_nearest_station(lat, lng)
-    print(nearest_station)
+    #print(nearest_station)
     
     name, accessibility = find_stop_near("Boston Commons")
     # print(name, accessibility)
