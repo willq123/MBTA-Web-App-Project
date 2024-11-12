@@ -11,7 +11,8 @@ William
 
 **2. Reflection** (~3 paragraphs + screenshots)
 
-* We found that the project itself was very interesting in terms of utilizing flask more in general. We found some errors when we ran the MBTA API but we figured out how to deal with them by testing the outputs through printing them out. Though this assignment had a relatively short timeline, we were able to set milestones for when things should be done and found that visualizing the code with pprint helped us with most of the troubleshooting.
+* We found that the project itself was very interesting in terms of utilizing flask more in general. We found some errors when we ran the MBTA API but we figured out how to deal with them by testing the outputs through printing them out. Though this assignment had a relatively short timeline, we were able to set milestones for when things should be done and found that visualizing the code with pprint helped us with most of the troubleshooting. One specific issue that we came across was running into errors when we tried to run the flask program as well as HTML error messages when we placed location and searched for the place. For some of those errors, we looked at the error message as it was able to give a general area of where we ran into some problems but for a few times, we ended up using chatGPT to explain the errors so that we could create some code that might solve it. One notable area of improvement would be the implementation of the event API since we could not retrieve the data.
+
 * One notable area of improvement would be the implementation of the event API since we were unable to retrieve the data.
 
 
